@@ -4,7 +4,7 @@ function getUsers() {
 }
 
 function getUserByID(id) {
-    if(id< 4 ){
+    if(id< 8 ){
     return id;}
     else{
         return "error";
