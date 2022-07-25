@@ -22,7 +22,7 @@ router.get('/:id', (req, res) => {
 
 router.get('/', (req, res) => {
 
-    res.send("all user")
+    res.send("login")
 })
 
 
