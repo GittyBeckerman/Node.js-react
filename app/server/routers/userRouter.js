@@ -1,5 +1,5 @@
 const express = require('express');
-const { getUsers, getUserByID } = require('../DB/userDB')
+const { getUsers, getUserByID } = require('../DB/UserService')
 const router = express.Router();
 
 router.get('/:id', (req, res) => {

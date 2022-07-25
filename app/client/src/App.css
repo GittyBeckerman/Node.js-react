@@ -8,6 +8,7 @@
     padding: 1em;
     text-align: left;
     width: 600px;
+    background-image: url('./blur-hospital.jpg');
   }
    
   .form {
@@ -16,4 +17,19 @@
    
   label {
     font-weight: 600;
+  }
+
+  body{
+    background-image: url('./blur-hospital.jpg');
+
+
+      margin: 0;
+
+      /* background-position: center; Center the image */
+      
+   background-repeat: no-repeat;
+      background-size:cover; /* Resize the background image to cover the entire container */
+    /* text-align:center; */
+
+
   }
