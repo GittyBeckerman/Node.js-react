@@ -5,7 +5,7 @@ const config = {
       host: "localhost",
       user: "root",
       password: "Toor22",
-      database: "database_for_project_r&g",
+      database: "project_database",
     },
   };
 

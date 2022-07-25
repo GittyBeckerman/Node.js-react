@@ -1,30 +1,22 @@
 const express = require('express');
-const { getUsers, getUserByID } = require('../DB/userDB')
+const { GetPatientByID, GetAllApointmentOfCustomer, UpdatePatient, AddPatient } = require('../Services/UserService')
 const router = express.Router();
 
-router.get('/:id', (req, res) => {
-//    res.send(req.params.id);
-
-
-    const data = getUserByID(req.params.id);
-    res.send(data)
-})
-
-router.get('/:id', (req, res) => {
-    const data = getUserByID(req.params.id);
+router.get('/:id',async (req, res) => {
+    const data = await GetPatientByID(req.params.id);
     if (data == null) {
-        res.status(500).send("error ")
-
+        res.status(500).send("error")
     }
     res.status(200).send(data)
 })
 
-
-router.get('/', (req, res) => {
-
-    res.send("login")
+router.get('/apointment/?id=:id', async (req, res) => {
+    const data = await GetAllApointmentOfCustomer(req.params.id)
+    if(data == null){
+        res.status(500).send("error")
+    }
+    res.status(200).send(data)
 })
-
 
 router.get('/search', (req, res) => {
     const name = req.query.name;
@@ -35,12 +27,19 @@ router.get('/search', (req, res) => {
     res.send(data)
 })
 
-
-
-router.post('/', (req, res, next) => {
+router.put('/', async (req, res, next) => {
     const data = req.body;
-    console.log(data);
-    res.send('Hello World! from post ')
+    await UpdatePatient(data);
+})
+
+router.post('/', async (req, res) =>{
+    const data = req.body;
+    await AddPatient(data)
+    const new_patient = await GetPatientByID(data.id);
+    if(new_patient == null){
+        res.status(500).send("error")
+    }
+    res.status(200).send(new_patient)
 })
 
 module.exports = router;
